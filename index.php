@@ -1,7 +1,6 @@
 <?php 
     require_once('db.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +9,7 @@
     <title>Gestion des ampoules</title>
 </head>
 <body>
-    <h1>Ampoules</h1>
+<h1>Ampoules</h1>
     <p><a href="edit.php">Entrer un changement d'ampoule</a></p>
     <table>
         <tr>
@@ -40,7 +39,7 @@
                 echo '<td>'.$data['position'].'</td>';
                 echo '<td>'.$data['power'].' '.$data['brand'].'</td>';
                 echo '<td><a href="edit.php?edit=1&id='.$data['id'].'"> Modifier</a></td>';
-                echo '<td><a href="delete.php?id='.$data['id'].'">Supprimer</a></td>"';
+                echo '<td><a href="delete.php?id='.$data['id'].'">Supprimer</a></td>';
                 echo '</tr>';
             }
         ?>
