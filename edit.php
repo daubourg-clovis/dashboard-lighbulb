@@ -9,6 +9,24 @@
     $brand = '';
     $error = false;
 
+    if(isset($_POST['edit']) && ($_POST['id'])){
+        $sql = 'SELECT id, change_date, floor, position, power, brand FROM lightbulb WHERE id=:id';
+        $sth = $pdo->prepare($sql);
+        $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+        $sth->execute();
+        $data = $sth->fetch(PDO::FETCH_ASSOC);
+        if(gettype($data) === 'boolean'){
+            header('Location : index.php');
+            exit;
+        }
+        $change_date = $data['change_date'];
+        $floor = $data['floor'];
+        $position = $data['position'];
+        $power = $data['power'];
+        $brand = $data['brand'];
+        $id = htmlentities($_GET['id']);
+    }
+
     if(count($_POST) > 0){
         // On vérifie que les champs ne soient pas vides, sinon on n'execute pas la requête
         if(strlen(trim($_POST['change_date']) !== 0)){
@@ -47,10 +65,10 @@
             if(isset($_POST['edit']) && ($_POST['id'])){
                 $sql = 'UPDATE lightbulb SET change_date=:change_date, floor=:floor, position=:position, power=:power, brand=:brand';
             }else{
-                $sql = 'INSERT INTO lightbulb(change_date, floor, position, power, brand) VALUES (:change_date, :floor, :position, :power, :brand';
+                $sql = 'INSERT INTO lightbulb(change_date, floor, position, power, brand) VALUES (:change_date, :floor, :position, :power, :brand)';
             }
             $sth = $pdo->prepare($sql);
-            $sth->bindValue(':change_date', strftime("%Y-%m-%d", strtotime($change_date)), PDO::PRAM_STR);
+            $sth->bindValue(':change_date', strftime("%Y-%m-%d", strtotime($change_date)), PDO::PARAM_STR);
             $sth->bindParam(':floor', $floor, PDO::PARAM_STR);
             $sth->bindParam(':position', $position, PDO::PARAM_STR);
             $sth->bindParam(':power', $power, PDO::PARAM_STR);
@@ -81,40 +99,40 @@
         <form action="" method="post">
             <div>
                 <label for="change_date">Date du changement de l'ampoule :</label>
-                <input type="date" id="change_date" name="change_date" >
+                <input type="date" id="change_date" name="change_date" value="<?=$change_date?>">
             </div>
             <div>
                 <label for="floor">Étage :</label>
-                <select name="floor" id="floor">
+                <select name="floor" id="floor" value="<?=$floor?>">
                     <option value="">Choisissez un étage</option>
-                    <option value="floor1">Premier étage</option>
-                    <option value="floor2">Deuxième étage</option>
-                    <option value="floor3">Troisième étage</option>
-                    <option value="floor4">Quatrième étage</option>
-                    <option value="floor5">Cinquième étage</option>
-                    <option value="floor6">Sixième étage</option>
-                    <option value="floor7">Septième étage</option>
-                    <option value="floor8">Huitième étage</option>
-                    <option value="floor9">Neuvième étage</option>
-                    <option value="floor10">Dixième étage</option>
-                    <option value="floor11">Onzième étage</option>
+                    <option value="Premier étage">Premier étage</option>
+                    <option value="Deuxième étage">Deuxième étage</option>
+                    <option value="Troisième étage">Troisième étage</option>
+                    <option value="Quatrième étage">Quatrième étage</option>
+                    <option value="Cinquième étage">Cinquième étage</option>
+                    <option value="Sixième étage">Sixième étage</option>
+                    <option value="Septième étage">Septième étage</option>
+                    <option value="Huitième étage">Huitième étage</option>
+                    <option value="Neuvième étage">Neuvième étage</option>
+                    <option value="Dixième étage">Dixième étage</option>
+                    <option value="Onzième étage">Onzième étage</option>
                 </select>
  
             </div>
             <div>
                 <label for="position">Coté du couloir :</label>
-                <select name="position" id="position">
+                <select name="position" id="position" value="<?=$position?>">
                     <option value="">Choisissez un emplacement</option>
-                    <option value="right">Côté droit</option>
-                    <option value="left">Côté gauche</option>
-                    <option value="end">Fond</option>
+                    <option value="Côté droit">Côté droit</option>
+                    <option value="Côté gauche">Côté gauche</option>
+                    <option value="Fond">Fond</option>
                 </select>
             
             </div>
             <div>
                 <label for="power">Puissance et marque de l'ampoule :</label>
-                <input type="text" id="power" name="power" placeholder ="Puissance en Watts">
-                <input type="text" id="brand" name="brand" placeholder="Marque" >
+                <input type="text" id="power" name="power" placeholder ="Puissance en Watts" value="<?=$power?>">
+                <input type="text" id="brand" name="brand" placeholder="Marque" value="<?=$brand?>">
             </div>
             <div>
                 <?php
