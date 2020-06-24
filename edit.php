@@ -9,7 +9,7 @@
     $brand = '';
     $error = false;
 
-    if(isset($_POST['edit']) && ($_POST['id'])){
+    if(isset($_GET['edit']) && ($_GET['id'])){
         $sql = 'SELECT id, change_date, floor, position, power, brand FROM lightbulb WHERE id=:id';
         $sth = $pdo->prepare($sql);
         $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
@@ -44,12 +44,12 @@
         }else{
             $error = true;
         }
-        if(strlen(trim($_POST['power']) !== 0)){
+        if(strlen(trim($_POST['power'])) !== 0){
             $power = trim($_POST['power']);
         }else{
             $error = true;
         }
-        if(strlen(trim($_POST['brand']) !== 0)){
+        if(strlen(trim($_POST['brand'])) !== 0){
             $brand = trim($_POST['brand']);
         }else{
             $error = true;
@@ -63,7 +63,7 @@
         // Si pas d'erreur, (aucun champ vide) on insère dans la bd
         if($error === false){
             if(isset($_POST['edit']) && ($_POST['id'])){
-                $sql = 'UPDATE lightbulb SET change_date=:change_date, floor=:floor, position=:position, power=:power, brand=:brand';
+                $sql = 'UPDATE lightbulb SET change_date=:change_date, floor=:floor, position=:position, power=:power, brand=:brand WHERE id=:id';
             }else{
                 $sql = 'INSERT INTO lightbulb(change_date, floor, position, power, brand) VALUES (:change_date, :floor, :position, :power, :brand)';
             }
@@ -75,7 +75,7 @@
             $sth->bindParam(':brand', $brand, PDO::PARAM_STR);
 
             if(isset($_POST['edit']) && ($_POST['id'])){
-                $sth->binParam(':id', $id, PDO::PARAM_INT);
+                $sth->bindParam(':id', $id, PDO::PARAM_INT);
             }
 
             $sth->execute();
@@ -103,8 +103,17 @@
             </div>
             <div>
                 <label for="floor">Étage :</label>
-                <select name="floor" id="floor" value="<?=$floor?>">
-                    <option value="">Choisissez un étage</option>
+                <select name="floor" id="floor" >
+                    <?php 
+                        if(isset($_GET['id']) && isset($_GET['edit'])){
+                            $value = $floor;
+                            $selectText = $floor;
+                        }else{
+                            $value = "";
+                            $selectText = "Choisissez un étage";
+                        }
+                    ?>
+                    <option value="<?=$value?>"><?=$selectText?></option>
                     <option value="Premier étage">Premier étage</option>
                     <option value="Deuxième étage">Deuxième étage</option>
                     <option value="Troisième étage">Troisième étage</option>
@@ -121,8 +130,17 @@
             </div>
             <div>
                 <label for="position">Coté du couloir :</label>
-                <select name="position" id="position" value="<?=$position?>">
-                    <option value="">Choisissez un emplacement</option>
+                <select name="position" id="position">
+                <?php 
+                        if(isset($_GET['id']) && isset($_GET['edit'])){
+                            $value = $position;
+                            $selectText = $position;
+                        }else{
+                            $value = "";
+                            $selectText = "Choisissez un emplacement";
+                        }
+                    ?>
+                    <option value="<?=$value?>"><?=$selectText?></option>
                     <option value="Côté droit">Côté droit</option>
                     <option value="Côté gauche">Côté gauche</option>
                     <option value="Fond">Fond</option>
