@@ -8,6 +8,49 @@
     $power = '';
     $brand = '';
     $error = false;
+
+    if(count($_POST) > 0){
+        // On vérifie que les champs ne soient pas vides, sinon on n'execute pas la requête
+        if(strlen(trim($_POST['change_date']) !== 0)){
+            $change_date = trim($_POST['change_date']);
+        }else{
+            $error = true;
+        }
+        if(strlen($_POST['floor']) !== 0){
+            $floor = $_POST['floor'];
+        }else{
+            $error = true;
+        }
+        if(strlen($_POST['position']) !== 0){
+            $position = $_POST['position'];
+        }else{
+            $error = true;
+        }
+        if(strlen(trim($_POST['power']) !== 0)){
+            $power = trim($_POST['power']);
+        }else{
+            $error = true;
+        }
+        if(strlen(trim($_POST['brand']) !== 0)){
+            $brand = trim($_POST['brand']);
+        }else{
+            $error = true;
+        }
+
+        //On transforme note id en entité html pour se protéger
+        if(isset($_POST['edit']) && ($_POST['id'])){
+            $id = htmlentities($_POST['id']);
+        }
+
+        // Si pas d'erreur, (aucun champ vide) on insère dans la bd
+        if($error === false){
+            if(isset($_POST['edit']) && ($_POST['id'])){
+                $sql = 'UPDATE lightbulb SET change_date=:change_date, floor=:floor, position=:position, power=:power, brand=:brand';
+            }else{
+                $sql = 'INSERT INTO lightbulb(change_date, floor, position, power, brand) VALUES (:change_date, :floor, :position, :power, :brand';
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +98,27 @@
             
             </div>
             <div>
-                <label for="power brand">Puissance et marque de l'ampoule :</label>
+                <label for="power">Puissance et marque de l'ampoule :</label>
                 <input type="text" id="power" name="power" placeholder ="Puissance en Watts">
                 <input type="text" id="brand" name="brand" placeholder="Marque" >
+            </div>
+            <div>
+                <?php
+                    if(isset($_GET['id']) && isset($_GET['edit'])){
+                        $validateText = 'Modifier';
+                    }else{
+                        $validateText = 'Ajouter';
+                    }
+                ?>
+                <button type="submit"><?=$validateText?></button>
+                <?php
+                    if(isset($_GET['id']) && isset($_GET['edit'])){
+                ?>
+                <input type="hidden" name="edit" value="1">
+                <input type="hidden" name="id" value="<?=$id?>">
+                <?php 
+                    }
+                ?>
             </div>
         </form>
     </div>
