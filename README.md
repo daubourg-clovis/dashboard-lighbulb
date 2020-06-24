@@ -62,9 +62,52 @@ On crée ensuite les variables qui nous seront utiles pour l'ajout comme pour la
     $error = false;
 ```
 
-Elle sont vide pour le moment afin de pouvoir les remplir automatiquement avec notre formulaire. On crée également la variable bolean ```$error = false;``` pour vérifier plus tard si il y a une erreur ou pas, et s'il y a une erreur ne pas executer la requête SQL.
+Elle sont vide pour le moment afin de pouvoir les remplir automatiquement avec notre formulaire. On crée également la variable booléenne ```$error = false;``` pour vérifier plus tard si il y a une erreur ou pas, et s'il y a une erreur ne pas executer la requête SQL.
 
 On crée ensuite notre formulaire
 
 ### Ajout d'une ligne
 
+Pour ajouter une ligne on va vérifier pour chaque donnée si elle est vraie (remplie) ou fausse, auquel cas on ne validera pas l'ajout dans la base de donnée.
+
+On commence par vérifier si le champ n'est pas vide grâce à la condition ```if(count($_POST) > 0)``` ensuite on vérifie pour chaque élément dont on veut rentre obligatoire la complétion s'il n'est pas vide de la manière suivant :
+```
+        if(strlen(trim($_POST['change_date']) !== 0)){
+            $change_date = trim($_POST['change_date']);
+        }else{
+            $error = true;
+        }
+        if(strlen($_POST['floor']) !== 0){
+            $floor = $_POST['floor'];
+        }else{
+            $error = true;
+        }
+        if(strlen($_POST['position']) !== 0){
+            $position = $_POST['position'];
+        }else{
+            $error = true;
+        }
+        if(strlen(trim($_POST['power'])) !== 0){
+            $power = trim($_POST['power']);
+        }else{
+            $error = true;
+        }
+        if(strlen(trim($_POST['brand'])) !== 0){
+            $brand = trim($_POST['brand']);
+        }else{
+            $error = true;
+        }
+```
+
+Et si effectivement le code ne détecte pas d'erreurs on peut insérer les informations dans notre base de donnée en utilisant la requête ```$sql = 'INSERT INTO lightbulb(change_date, floor, position, power, brand) VALUES (:change_date, :floor, :position, :power, :brand)';```
+On vient ensuite préparer cette requête et lié des paramètres aux différents champs renseigné afin de se protéger d'injection SQL :
+```
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':change_date', strftime("%Y-%m-%d", strtotime($change_date)), PDO::PARAM_STR);
+        $sth->bindParam(':floor', $floor, PDO::PARAM_STR);
+        $sth->bindParam(':position', $position, PDO::PARAM_STR);
+        $sth->bindParam(':power', $power, PDO::PARAM_STR);
+        $sth->bindParam(':brand', $brand, PDO::PARAM_STR);
+        $sth->execute();
+```
+Si les informations rentrée son correctes et qu'il n'y a pas d'erreurs, on indique a notre page de nous rediriger sur la page index.php lorqu'on clic sur le bouton "Ajouter".
