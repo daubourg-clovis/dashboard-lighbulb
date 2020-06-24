@@ -49,6 +49,20 @@
             }else{
                 $sql = 'INSERT INTO lightbulb(change_date, floor, position, power, brand) VALUES (:change_date, :floor, :position, :power, :brand';
             }
+            $sth = $pdo->prepare($sql);
+            $sth->bindValue(':change_date', strftime("%Y-%m-%d", strtotime($change_date)), PDO::PRAM_STR);
+            $sth->bindParam(':floor', $floor, PDO::PARAM_STR);
+            $sth->bindParam(':position', $position, PDO::PARAM_STR);
+            $sth->bindParam(':power', $power, PDO::PARAM_STR);
+            $sth->bindParam(':brand', $brand, PDO::PARAM_STR);
+
+            if(isset($_POST['edit']) && ($_POST['id'])){
+                $sth->binParam(':id', $id, PDO::PARAM_INT);
+            }
+
+            $sth->execute();
+
+            header('Location: index.php');
         }
     }
 ?>
