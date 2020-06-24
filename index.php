@@ -39,7 +39,8 @@
                 echo '<td>'.$data['position'].'</td>';
                 echo '<td>'.$data['power'].' '.$data['brand'].'</td>';
                 echo '<td><a href="edit.php?edit=1&id='.$data['id'].'"> Modifier</a></td>';
-                echo '<td><a href="delete.php?id='.$data['id'].'">Supprimer</a></td>';
+                echo '<td><a href="delete.php?id='.$data['id'].'" onclick="return delFunction()">Supprimer</a></td>';
+                echo '<script> function delFunction(){ let del = confirm("Êtes vous sur de vouloir supprimer ?"); if (del == false){return false;}}</script>';
                 echo '</tr>';
             }
         ?>
