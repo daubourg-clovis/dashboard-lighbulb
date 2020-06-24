@@ -44,3 +44,27 @@ On précise dans un premier temps qu'on veut supprimer seulement sur lequel on a
 ```
 
 On ajoute après notre condition if la ligne ```header('Location: index.php');``` pour lui dire de nous rediriger directement sur la page index.php ce qui aura pour effet de ne pas nous faire changer de page si la requête de supression s'execute bien.
+
+## Ajout/Modification d'un ligne 
+
+On crée une page edit.php qu'on a lié à nos href sur notre page index.php, de manière normale pour le simple ajout de ligne: ```<a href="edit.php">``` mais avec une condition pour la modification ```<a href="edit.php?edit=1&id='.$data['id'].'">```.
+
+On commence encore une fois par la lié à notre page de connection à la base de donnée.
+
+On crée ensuite les variables qui nous seront utiles pour l'ajout comme pour la modification : 
+```
+    $id = '',
+    $change_date = '';
+    $floor = '';
+    $position = '';
+    $power = '';
+    $brand = '';
+    $error = false;
+```
+
+Elle sont vide pour le moment afin de pouvoir les remplir automatiquement avec notre formulaire. On crée également la variable bolean ```$error = false;``` pour vérifier plus tard si il y a une erreur ou pas, et s'il y a une erreur ne pas executer la requête SQL.
+
+On crée ensuite notre formulaire
+
+### Ajout d'une ligne
+
