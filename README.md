@@ -110,4 +110,23 @@ On vient ensuite préparer cette requête et lié des paramètres aux différent
         $sth->bindParam(':brand', $brand, PDO::PARAM_STR);
         $sth->execute();
 ```
-Si les informations rentrée son correctes et qu'il n'y a pas d'erreurs, on indique a notre page de nous rediriger sur la page index.php lorqu'on clic sur le bouton "Ajouter".
+Si les informations rentrée son correctes et qu'il n'y a pas d'erreurs, on indique a notre page de nous rediriger sur la page index.php lorsque l'on clic sur le bouton "Ajouter".
+
+### Modifier un ligne
+
+On va se baser en grande partie sur le code pour ajouter sauf qu'on va placer en amont une condition qui ne sera valide que si on a cliqué sur modifier qui vas aller chercher les données entrées pour l'id sur laquelle on a cliquer sur modifier : ```$sql = 'SELECT id, change_date, floor, position, power, brand FROM lightbulb WHERE id=:id';```. Requête qu'on va préparer et on va attribuer un paramètre à l'id pour se protéger ```$id = htmlentities($_GET['id']);```.
+On donne  attribue les données de la table a des variables pour pouvoir voir ce qu'elles sont et ainsi le modifier : 
+```
+        $change_date = $data['change_date'];
+        $floor = $data['floor'];
+        $position = $data['position'];
+        $power = $data['power'];
+        $brand = $data['brand'];
+```
+On repasse ensuite par notre condition pour vérifier le remplissage de toutes les données du formulaire jusqu'a la condition de si tout est rempli on onvoit les nouvelles informations à notre base de donnée : 
+```
+    if(isset($_POST['edit']) && ($_POST['id'])){
+        $sql = 'UPDATE lightbulb SET change_date=:change_date, floor=:floor, position=:position, power=:power, brand=:brand WHERE id=:id';
+
+```
+
