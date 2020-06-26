@@ -90,10 +90,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="medias/favicon.ico" type="image/x-icon">
     <title>Ajout/Modification</title>
 </head>
 <body>
-    <h1>Ajouter/Modifier une ligne</h1>
+    <?php
+        if(isset($_GET['edit']) && ($_GET['id'])){
+            $titleText = "Modifier la ligne";
+        }else{
+            $titleText = "Ajouter une ampoule";
+        }
+    ?>
+    <h1><?=$titleText?></h1>
 
     <div>
         <form action="" method="post">
