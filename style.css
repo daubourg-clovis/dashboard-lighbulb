@@ -31,7 +31,7 @@ th{
 
 
 
-h1{
+#h1-index{
     text-align: center;
     font-size: 2rem;
 }
@@ -55,4 +55,5 @@ td{
 .box{
     margin: 0 auto;
     max-width: 700px;
+    border: 1px solid black;
 }
