@@ -1,0 +1,18 @@
+.svg-center{
+    text-align: center;
+}
+
+.edit{
+    fill: #134085;
+}
+
+.delete{
+    fill: red;
+}
+
+.box{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 5px;
+}
