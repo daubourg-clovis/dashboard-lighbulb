@@ -98,29 +98,32 @@
 </head>
 <body>
     <div class="box">
+        <header id="header-edit">
+            <?php
+                if(isset($_GET['edit']) && ($_GET['id'])){
+                    $titleText = "Modifier la ligne";
+                    $cancelText = "Annuler";
+                }else{
+                    $titleText = "Ajouter un changement";
+                    $cancelText = "Retour";
+                }
+            ?>
+            <h1 id="h1-edit"><?=$titleText?></h1>
+        </header>
 
-        <?php
-            if(isset($_GET['edit']) && ($_GET['id'])){
-                $titleText = "Modifier la ligne";
-            }else{
-                $titleText = "Ajouter une ampoule";
-            }
-        ?>
-        <h1><?=$titleText?></h1>
-        <button><a href="index.php">Annuler</a></button>
-    
-        <div>
+        <a href="index.php"> <input type="button" value="<?=$cancelText?>"class="btn btn-primary btn-sm"></a>
+        <div class="vert-align">
             <form action="" method="post">
                 <div class="form-group row">
-                    <div class="col-lg-2">
-                        <label for="change_date" class="col-form-label">Date du changement de l'ampoule :</label>
+                    <div class="col-lg-3">
+                        <label for="change_date" class="col-form-label">Date :</label>
                     </div>
                     <div>
                         <input type="date" id="change_date" name="change_date" value="<?=$change_date?>" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <label for="floor" class="col-form-label">Étage :</label>
                     </div>
                     <select name="floor" id="floor" required>
@@ -149,7 +152,7 @@
      
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <label for="position" class="col-form-label">Coté du couloir :</label>
                     </div>
                     <select name="position" id="position" required>
@@ -170,15 +173,18 @@
                 
                 </div>
                 <div class="form-group row" >
-                    <div class="col-lg-2">
-                        <label for="power" class="col-form-label">Puissance et marque de l'ampoule :</label>
+                    <div class="col-lg-3">
+                        <label for="power" class="col-form-label">Puissance :</label>
                     </div>
-                    <div>
-                        <input type="text" id="power" name="power" placeholder ="Puissance en Watts" value="<?=$power?>" required >
-                        <input type="text" id="brand" name="brand" placeholder="Marque" value="<?=$brand?>" required>
-                    </div>
+                    <input type="number" id="power" name="power" placeholder ="Puissance en Watts" value="<?=$power?>" required >
                 </div>
-                <div>
+                <div class="form-group row">
+                    <div class="col-lg-3">
+                        <label for="brand">Marque :</label>
+                    </div>
+                    <input type="text" id="brand" name="brand" placeholder="Marque" value="<?=$brand?>" required>
+                </div>
+                <div class="button_div">
                     <?php
                         if(isset($_GET['id']) && isset($_GET['edit'])){
                             $validateText = 'Modifier';
@@ -186,7 +192,7 @@
                             $validateText = 'Ajouter';
                         }
                     ?>
-                    <button type="submit"><?=$validateText?></button>
+                    <button type="submit" class="btn btn-primary btn-lg"><?=$validateText?></button>
                     <?php
                         if(isset($_GET['id']) && isset($_GET['edit'])){
                     ?>
