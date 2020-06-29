@@ -110,8 +110,9 @@
             ?>
             <h1 id="h1-edit"><?=$titleText?></h1>
         </header>
-
-        <a href="index.php"> <input type="button" value="<?=$cancelText?>"class="btn btn-primary btn-sm"></a>
+        <div id="btn-back">
+            <a href="index.php" id="btn-back"> <input type="button" value="<?=$cancelText?>"class="btn btn-primary btn-sm" ></a>
+        </div>
         <div class="vert-align">
             <form action="" method="post">
                 <div class="form-group row">
@@ -119,14 +120,14 @@
                         <label for="change_date" class="col-form-label">Date :</label>
                     </div>
                     <div>
-                        <input type="date" id="change_date" name="change_date" value="<?=$change_date?>" required>
+                        <input type="date"  class="width-f" id="change_date" name="change_date" value="<?=$change_date?>" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-3">
                         <label for="floor" class="col-form-label">Étage :</label>
                     </div>
-                    <select name="floor" id="floor" required>
+                    <select name="floor" id="floor" required class="width-f">
                         <?php 
                             if(isset($_GET['id']) && isset($_GET['edit'])){
                                 $value = $floor;
@@ -153,9 +154,9 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-3">
-                        <label for="position" class="col-form-label">Coté du couloir :</label>
+                        <label for="position" class="col-form-label">Coté :</label>
                     </div>
-                    <select name="position" id="position" required>
+                    <select name="position" id="position" required class="width-f">
                     <?php 
                             if(isset($_GET['id']) && isset($_GET['edit'])){
                                 $value = $position;
@@ -176,13 +177,13 @@
                     <div class="col-lg-3">
                         <label for="power" class="col-form-label">Puissance :</label>
                     </div>
-                    <input type="number" id="power" name="power" placeholder ="Puissance en Watts" value="<?=$power?>" required >
+                    <input type="number" id="power" name="power" placeholder ="Puissance en Watts" value="<?=$power?>" required class="width-f">
                 </div>
                 <div class="form-group row">
                     <div class="col-lg-3">
                         <label for="brand">Marque :</label>
                     </div>
-                    <input type="text" id="brand" name="brand" placeholder="Marque" value="<?=$brand?>" required>
+                    <input type="text" id="brand" name="brand" placeholder="Marque" value="<?=$brand?>" required class="width-f">
                 </div>
                 <div class="button_div">
                     <?php
@@ -192,7 +193,7 @@
                             $validateText = 'Ajouter';
                         }
                     ?>
-                    <button type="submit" class="btn btn-primary btn-lg"><?=$validateText?></button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-shadow"><?=$validateText?></button>
                     <?php
                         if(isset($_GET['id']) && isset($_GET['edit'])){
                     ?>
