@@ -101,3 +101,106 @@ button{
 #btn-mg{
     margin-right: 1.875rem;
 }
+
+
+
+/* Responsive ----------------------------------------------------------------- */
+
+/* Max 1200 ----*/
+
+@media only screen and (min-width:992px) and (max-width: 1199.98px)
+{
+    .box{
+        margin-top: 3rem;
+    }
+}
+
+
+/* Max 992 ----  */
+
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px)
+{
+    #btn-margin{
+        text-align: center;
+    }
+
+    #btn-end{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .container{
+        padding: 0;
+        margin: 0 1.063rem;
+    }
+
+    .box{
+        margin-top: 3rem;
+    }
+
+
+}
+
+/* Max 768 ---  */
+
+
+@media only screen and (min-width: 480px) and (max-width: 767.98px)
+{
+    #btn-margin{
+        text-align: center;
+    }
+
+    #btn-end{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .container{
+        padding: 0;
+        margin: 0 0.5rem;
+    }
+
+    .box{
+        margin-top: 0;
+        min-height: device-height;
+    }
+
+
+    #form-padding{
+        padding-left: 100px;
+    }
+   
+
+
+}
+
+/* Max 480 -----  */
+
+
+@media only screen and (max-width : 479.98px)
+{
+    #btn-margin{
+        text-align: center;
+    }
+
+    #btn-end{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .container{
+        padding: 0;
+        margin: 0;
+    }
+
+    .box{
+        margin-top: 0;
+        max-height: device-height;
+    }
+
+
+    #form-padding{
+        padding-left: 75px;
+    }
+}

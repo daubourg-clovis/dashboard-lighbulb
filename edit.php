@@ -114,9 +114,9 @@
             <a href="index.php" class="btn btn-primary btn-sm" id="btn-mg"><?=$cancelText?></a>
         </div>
         <div class="vert-align">
-            <form action="" method="post">
-                <div class="form-group row">
-                    <div class="col-lg-3">
+            <form  method="post" id="form-padding" >
+                <div class="form-group row xs-flex">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                         <label for="change_date" class="col-form-label">Date :</label>
                     </div>
                     <div>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                         <label for="floor" class="col-form-label">Étage :</label>
                     </div>
                     <select name="floor" id="floor" required class="width-f">
@@ -153,7 +153,7 @@
      
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                         <label for="position" class="col-form-label">Coté :</label>
                     </div>
                     <select name="position" id="position" required class="width-f">
@@ -174,13 +174,13 @@
                 
                 </div>
                 <div class="form-group row" >
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                         <label for="power" class="col-form-label">Puissance :</label>
                     </div>
                     <input type="number" id="power" name="power" placeholder ="Puissance en Watts" value="<?=$power?>" required class="width-f">
                 </div>
                 <div class="form-group row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                         <label for="brand">Marque :</label>
                     </div>
                     <input type="text" id="brand" name="brand" placeholder="Marque" value="<?=$brand?>" required class="width-f">
