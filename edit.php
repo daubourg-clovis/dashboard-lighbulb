@@ -111,7 +111,7 @@
             <h1 id="h1-edit"><?=$titleText?></h1>
         </header>
         <div id="btn-back">
-            <a href="index.php" id="btn-back"> <input type="button" value="<?=$cancelText?>"class="btn btn-primary btn-sm" ></a>
+            <a href="index.php" class="btn btn-primary btn-sm" id="btn-mg"><?=$cancelText?></a>
         </div>
         <div class="vert-align">
             <form action="" method="post">
@@ -193,7 +193,7 @@
                             $validateText = 'Ajouter';
                         }
                     ?>
-                    <button type="submit" class="btn btn-primary btn-lg btn-shadow"><?=$validateText?></button>
+                    <button type="submit" class="btn btn-primary btn-lg"><?=$validateText?></button>
                     <?php
                         if(isset($_GET['id']) && isset($_GET['edit'])){
                     ?>

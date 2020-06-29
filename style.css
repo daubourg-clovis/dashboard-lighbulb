@@ -1,9 +1,19 @@
 body{
-    background-color: lightgray;
+    background-color: #15202B;
+    color: white;
 }
 
 th{
     text-align: center;
+}
+
+h1{
+    color: #f8ff40;
+    margin-top: 0.625rem;
+}
+
+th,td{
+    color: white;
 }
 
 .svg-center{
@@ -11,18 +21,28 @@ th{
 }
 
 .edit{
-    fill: #134085;
+    fill: #5890E5;
 }
 
 .delete{
     fill: red;
 }
 
+#btn-margin{
+    margin-bottom: 0.625rem;
+}
+
+#btn-end{
+    text-align: end;
+}
+
 
 
 .button_div{
-    padding: 50px 25%;
+    padding: 1.563rem;
+    margin-bottom: 1.25rem;
 }
+
 
 
 
@@ -32,7 +52,7 @@ th{
 }
 
 header{
-    margin-bottom: 20px;
+    margin-bottom: 1.563rem;
 }
 
 .vert-align{
@@ -43,10 +63,14 @@ td{
     text-transform: capitalize;
 }
 
+#tr-hover:hover{
+    color: white;
+    background-color:#192734;
+}
+
 #pw-content::after{
     content: "W";
 }
-
 
 
 
@@ -54,18 +78,26 @@ td{
     box-sizing: border-box;
     margin: 0 auto;
     max-width: 500px;
-    border: 1px solid white;
-    box-shadow: -1px 11px 50px 9px rgba(0,0,0,0.37);
+    border: 0.5px solid white;
+    box-shadow: -1px 11px 85px -37px rgba(248,255,64,1);
     text-align: center;
-    margin-top: 100px;
+    margin-top: 6.25rem;
+}
+
+button{
+    color: white;
+    text-transform: none;
 }
 
 .width-f{
-    min-width: 250px;
-    min-height: 40px;
+    min-width: 15.625rem;
+    min-height: 2.5rem;
 }
 
 #btn-back{
-    margin-right: 15px;
     text-align: right;
+}
+
+#btn-mg{
+    margin-right: 1.875rem;
 }
