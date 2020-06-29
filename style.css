@@ -63,12 +63,12 @@ td{
     text-transform: capitalize;
 }
 
-#tr-hover:hover{
+.tr-hover:hover{
     color: white;
     background-color:#192734;
 }
 
-#pw-content::after{
+.pw-content::after{
     content: "W";
 }
 
