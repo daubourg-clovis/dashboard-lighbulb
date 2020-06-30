@@ -28,6 +28,10 @@ th,td{
     fill: red;
 }
 
+#add{
+    fill: white;
+}
+
 #btn-margin{
     margin-bottom: 0.625rem;
 }
@@ -69,7 +73,7 @@ td{
 }
 
 .pw-content::after{
-    content: "W";
+    content: " W";
 }
 
 

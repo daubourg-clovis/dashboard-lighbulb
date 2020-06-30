@@ -1,5 +1,10 @@
-<?php 
+<?php
+    session_start();
     require_once('db.php');
+    if(!isset($_SESSION['user'])){
+        header('Location: login.php');
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +21,7 @@
     <header id="header-index">
         <h1 id="h1-index">Gérer les ampoules de l'immeuble</h1>
     </header>
-
+    <a href="logout.php">Déconnexion</a>
     <div class="container">
 
         <div class="vert-align">
@@ -61,7 +66,7 @@
                     ?>
                 </table>
                 <div id="btn-end">
-                <a href="edit.php" class="btn btn-primary btn-sm">Entrer un changement d'ampoule</a>
+                <a href="edit.php" class="btn btn-primary btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="add"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></a>
                 </div>
             </div>
     </div>
