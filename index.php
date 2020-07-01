@@ -19,10 +19,10 @@
 </head>
 <body>
     <header id="header-index">
-        <h1 id="h1-index">Gérer les ampoules de l'immeuble</h1>
-    </header>
-    <a href="logout.php">Déconnexion</a>
-    <div class="container">
+      <a href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 10v-5l8 7-8 7v-5h-8v-4h8zm-16-8v20h14v-2h-12v-16h12v-2h-14z"/></svg></a>
+      </header>
+      <div class="container">
+        <h1 id="h1-index">Gestion des ampoules</h1>
 
         <div class="vert-align">
             <div id="btn-margin">
@@ -59,7 +59,7 @@
                             echo '<td class="pw-content">'.$data['power'].'</td>';
                             echo '<td>'.$data['brand'].'</td>';
                             echo '<td class="svg-center"><a href="edit.php?edit=1&id='.$data['id'].'"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="edit"><path d="M14.078 4.232l-12.64 12.639-1.438 7.129 7.127-1.438 12.641-12.64-5.69-5.69zm-10.369 14.893l-.85-.85 11.141-11.125.849.849-11.14 11.126zm2.008 2.008l-.85-.85 11.141-11.125.85.85-11.141 11.125zm18.283-15.444l-2.816 2.818-5.691-5.691 2.816-2.816 5.691 5.689z"/></svg></a></td>';
-                            echo '<td class="svg-center"><a href="#staticBackdrop" class="deletecheck" data-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="delete"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></a></td>';
+                            echo '<td class="svg-center"><button data-target="#staticBackdrop" data-toggle="modal" data-id="'.$data['id'].'" id="btn-cross"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="delete"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></button></td>';
                             echo '</tr>';
                         }
                     ?>
@@ -84,15 +84,15 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-            <a href="<?php echo 'delete.php?id='.$data['id'].'';?>" class="btn btn-delete">Supprimer</a>
+            <button id="btn-delete" class="btn btn-danger">SUPPRIMER</button>
           </div>
         </div>
       </div>
   </div>
-  <script src="deletecheck.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="deletecheck.js"></script>
 </body>
 </html>

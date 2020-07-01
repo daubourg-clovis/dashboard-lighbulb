@@ -28,6 +28,11 @@ th,td{
     fill: red;
 }
 
+#btn-cross{
+    border: none;
+    background-color: transparent;
+}
+
 #add{
     fill: white;
     width: 2.5rem;
@@ -37,10 +42,7 @@ th,td{
 #btn-margin{
     margin-bottom: 0.625rem;
 }
-.btn-delete{
-    background-color: red;
-    color: white;
-}
+
 
 #login-arrow{
     fill: white;
@@ -51,6 +53,7 @@ th,td{
 
 #btn-login{
     font-weight: 700;
+    font-size: 1.5rem;
     margin-top: 15px;
 }
 
@@ -104,6 +107,7 @@ td{
 
 #login{
     margin-top: 35px;
+    font-size: 1.3rem;
 }
 
 .box{
