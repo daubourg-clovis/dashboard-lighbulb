@@ -30,14 +30,40 @@ th,td{
 
 #add{
     fill: white;
+    width: 2.5rem;
+    height: auto;
 }
 
 #btn-margin{
     margin-bottom: 0.625rem;
 }
+.btn-delete{
+    background-color: red;
+    color: white;
+}
 
+#login-arrow{
+    fill: white;
+}
 #btn-end{
     text-align: end;
+}
+
+#btn-login{
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.modal{
+    top: 200px;    
+}
+
+.bg-modal{
+    background-color: #15202B;
+}
+
+.cancel{
+    color: white;
 }
 
 
@@ -76,7 +102,9 @@ td{
     content: " W";
 }
 
-
+#login{
+    margin-top: 35px;
+}
 
 .box{
     box-sizing: border-box;
@@ -86,6 +114,17 @@ td{
     box-shadow: -1px 11px 85px -37px rgba(248,255,64,1);
     text-align: center;
     margin-top: 6.25rem;
+}
+
+.loginbox{
+    box-sizing: border-box;
+    margin: 0 auto;
+    min-height: 300px;
+    max-width: 500px;
+    border: 0.5px solid white;
+    box-shadow: -1px 11px 85px -37px rgba(248,255,64,1);
+    text-align: center;
+    margin-top: 15%;
 }
 
 button{
