@@ -186,12 +186,12 @@ if(session_destroy()){
 
 ```
 
-## création du CSS avec l'aide de bootstrap
+## Création du CSS avec l'aide de bootstrap
     Utilisation de la grille, des preset de base de bootstrap pour le tableau et les boutons. Mise en place d'icônes pour modifier/supprimer/se déconnecter
 
 
 
-## Amélioration du modal de vérification de supression avec bootstrap
+## Amélioration du modal de vérification de suppression avec bootstrap
 
 J'avais au début fait une vérification de suppression utilisant la fonction Javascript ```confirm()``` qui utilise la fenêtre par défaut du navigateur. Pour le projet on m'a demandé de faire moi-même cette fenêtre et donc le code correspondant pour que cela corresponde aux graphismes du site. J'ai donc utilise le modal de bootsrap 
 ```
