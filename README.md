@@ -186,3 +186,47 @@ if(session_destroy()){
 
 ```
 
+## création du CSS avec l'aide de bootstrap
+    Utilisation de la grille, des preset de base de bootstrap pour le tableau et les boutons. Mise en place d'icônes pour modifier/supprimer/se déconnecter
+
+
+
+## Amélioration du modal de vérification de supression avec bootstrap
+
+J'avais au début fait une vérification de suppression utilisant la fonction Javascript ```confirm()``` qui utilise la fenêtre par défaut du navigateur. Pour le projet on m'a demandé de faire moi-même cette fenêtre et donc le code correspondant pour que cela corresponde aux graphismes du site. J'ai donc utilise le modal de bootsrap 
+```
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-modal">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Supprimer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="cancel">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Êtes vous sur de vouloir supprimer ?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            <button id="btn-delete" class="btn btn-danger">SUPPRIMER</button>
+          </div>
+        </div>
+      </div>
+```
+
+que j'ai réadapté pour qu'il redirige sur delete.php grâce au code suivant 
+```<button data-target="#staticBackdrop" data-toggle="modal" data-id="'.$data['id'].'" id="btn-cross"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="delete"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg></button>``` dans le html pour le lier à la page deletecheck.js et au modalgit commit .
+
+Comme j'ai utilisé bootstrap qui utilise jquery, j'ai également utilisé jquery pour gérer le modal : 
+```
+deleteId = 0;
+$('#staticBackdrop').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    deleteId = button[0].dataset.id;
+    });
+
+$('#btn-delete').click(function(){
+    $(location).attr('href', 'delete.php?id='+deleteId);
+});
+```
