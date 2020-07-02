@@ -18,11 +18,32 @@
     <title>Gestion des ampoules</title>
 </head>
 <body>
-    <header id="header-index">
-      <a href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 10v-5l8 7-8 7v-5h-8v-4h8zm-16-8v20h14v-2h-12v-16h12v-2h-14z"/></svg></a>
+    
+    <header id="header-index" >
+    <nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#" ><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" id="svg-bulb"><path d="M6 3.083c0-.421.297-.801.734-.897 4.408-.97 4.575-.844 5.001-1.678.166-.322.497-.508.842-.508 1.443 0 1.128 2.504-1.117 3.032-.639.15-4.314.949-4.314.949-.586.129-1.146-.307-1.146-.898zm1.146 4.059l10.119-2.226c.439-.096.735-.476.735-.896 0-.587-.559-1.028-1.146-.898l-10.12 2.225c-.507.112-.825.604-.711 1.1s.617.807 1.123.695zm2.012 6.361v.497h-2.158v2.639c0 1.779 1.631 2.58 2 4.361h6c.375-1.753 2-2.585 2-4.361v-2.639h-2.157v-.958c0-.734.52-1.372 1.252-1.535l1.062-.291c.438-.096.734-.476.734-.896 0-.587-.559-1.028-1.146-.898l-1.259.344c-1.456.333-2.486 1.602-2.486 3.065v1.169h-2v-.689c0-1.627-.865-2.291-2.077-3.394l8.343-1.835c.438-.097.734-.476.734-.897 0-.59-.559-1.028-1.146-.898l-10.12 2.226c-.437.096-.734.476-.734.896 0 .292.131.494.344.707.843.843 2.814 1.68 2.814 3.387zm4.141 10.156c-.19.216-.465.341-.753.341h-1.093c-.288 0-.562-.125-.752-.341l-1.451-1.659h5.5l-1.451 1.659z"/></svg>Une idée lumineuse</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Gestion <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="edit.php">Ajouter</a>
+      </li>
+      <li class="nav-item" id="svg-end">
+        </li>
+      </ul>
+    </div>
+    <a href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" id="svg-disc"><path d="M16 10v-5l8 7-8 7v-5h-8v-4h8zm-16-8v20h14v-2h-12v-16h12v-2h-14z"/></svg></a>
+  </nav>
+      
+      </div>
       </header>
       <div class="container">
-        <h1 id="h1-index">Gestion des ampoules</h1>
+        <h2 id="h2-index">Gestion des ampoules</h2>
 
         <div class="vert-align">
             <div id="btn-margin">

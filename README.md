@@ -193,7 +193,7 @@ if(session_destroy()){
 
 ## Amélioration du modal de vérification de suppression avec bootstrap
 
-J'avais au début fait une vérification de suppression utilisant la fonction Javascript ```confirm()``` qui utilise la fenêtre par défaut du navigateur. Pour le projet on m'a demandé de faire moi-même cette fenêtre et donc le code correspondant pour que cela corresponde aux graphismes du site. J'ai donc utilise le modal de bootsrap 
+J'avais au début fait une vérification de suppression utilisant la fonction Javascript ```confirm()``` qui utilise la fenêtre par défaut du navigateur. Pour le projet on m'a demandé de faire moi-même cette fenêtre et donc le code correspondant pour que cela corresponde aux graphismes du site. J'ai donc utilise le modal de bootstrap 
 ```
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">

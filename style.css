@@ -7,7 +7,7 @@ th{
     text-align: center;
 }
 
-h1{
+h1,h2{
     color: #f8ff40;
     margin-top: 0.625rem;
 }
@@ -16,8 +16,28 @@ th,td{
     color: white;
 }
 
+#svg-end{
+    text-align: end;
+}
 .svg-center{
     text-align: center;
+}
+
+.navbar{
+    background-color: #192734;
+}
+
+.navbar-brand{
+    margin-right: 50px;
+    cursor: default;
+}
+#svg-bulb{
+    fill: #f8ff40;
+}
+
+#svg-disc{
+    fill: white;
+    size: 2rem;
 }
 
 .edit{
@@ -77,9 +97,11 @@ th,td{
 }
 
 
+#header-index{
+    margin-bottom: 100px;
+}
 
-
-#h1-index{
+#h2-index{
     text-align: center;
     font-size: 2rem;
 }

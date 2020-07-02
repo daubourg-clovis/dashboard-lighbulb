@@ -1,5 +1,10 @@
 <?php
-    require_once('db.php');
+       session_start();
+       require_once('db.php');
+       if(!isset($_SESSION['user'])){
+           header('Location: login.php');
+           exit;
+       }
 
     $id = '';
     $change_date = '';
