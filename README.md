@@ -8,8 +8,8 @@ On créer une page index.php et on y inclut notre connection à la base de donn�
 
 On met en place un tableau avec l'entête des colonnes en html et le corps de ces colonnes en php, qui seront crées et remplies par les informations de notre base de donnée.
 
-Pour cela on fait d'abord une requete SQL ``` $sql = 'SELECT id, change_date, floor, position, power, brand FROM lightbulb';``` qu'on prépare afin de se protéger des injections SQL.
-On va ensuite mettres les données dans un tableau php ```$datas = $sth->fetchAll(PDO::FETCH_ASSOC);``` afin de pouvoir les insérer dans notre tableau.
+Pour cela on fait d'abord une requête SQL ``` $sql = 'SELECT id, change_date, floor, position, power, brand FROM lightbulb';``` qu'on prépare afin de se protéger des injections SQL.
+On va ensuite mettre les données dans un tableau php ```$datas = $sth->fetchAll(PDO::FETCH_ASSOC);``` afin de pouvoir les insérer dans notre tableau.
 On affiche les données qui nous intéressent en passant par un ```foreach($datas as $data)``` puis en faisant un ```echo``` pour chaque ligne du tableau :
 ```
     echo '<tr>';
@@ -30,11 +30,11 @@ On inclut également les lignes du modification et de supression redirigeant ver
 On commit et on push sur github avant de passer à la suite !
 
 
-## Supression d'une ligne 
+## Suppression d'une ligne 
 
 Dans un fichier séparé delete.php qu'on a lié à notre à notre page dans notre tableau on fait le code php suivant pour pouvoir supprimer une ligne
-Dans un premier temps on la lie aussi a notre page de connection à le base de données pour que l'action de la requete SQL de supression puisse se faire.
-On précise dans un premier temps qu'on veut supprimer seulement sur lequel on a cliqué pour se faire avant de faire notre reqête on l'inclut dans un ```if(isset($_GET['id']))``` puis ont fait notre reqête sans oublier de la préparer avec l'aide d'un marqueur ```:id``` auquel on attribue la valeur ```$_GET['id']```. IN lui lie aussi le statement ```PDO::PARAM_INT``` pour préciser que l'id est un chiffre entier, ce qui nous sert de protection.
+Dans un premier temps on la lie aussi a notre page de connection à le base de données pour que l'action de la requête SQL de suppression puisse se faire.
+On précise dans un premier temps qu'on veut supprimer seulement sur lequel on a cliqué pour se faire avant de faire notre requête on l'inclut dans un ```if(isset($_GET['id']))``` puis ont fait notre requête sans oublier de la préparer avec l'aide d'un marqueur ```:id``` auquel on attribue la valeur ```$_GET['id']```. IN lui lie aussi le statement ```PDO::PARAM_INT``` pour préciser que l'id est un chiffre entier, ce qui nous sert de protection.
 ```
     $sql = 'DELETE FROM lightbulb WHERE id=:id';
     $sth = $pdo->prepare($sql);
@@ -43,9 +43,9 @@ On précise dans un premier temps qu'on veut supprimer seulement sur lequel on a
 
 ```
 
-On ajoute après notre condition if la ligne ```header('Location: index.php');``` pour lui dire de nous rediriger directement sur la page index.php ce qui aura pour effet de ne pas nous faire changer de page si la requête de supression s'execute bien.
+On ajoute après notre condition if la ligne ```header('Location: index.php');``` pour lui dire de nous rediriger directement sur la page index.php ce qui aura pour effet de ne pas nous faire changer de page si la requête de suppression s'execute bien.
 
-## Ajout/Modification d'un ligne 
+## Ajout/Modification d'une ligne 
 
 On crée une page edit.php qu'on a lié à nos href sur notre page index.php, de manière normale pour le simple ajout de ligne: ```<a href="edit.php">``` mais avec une condition pour la modification ```<a href="edit.php?edit=1&id='.$data['id'].'">```.
 
@@ -131,9 +131,58 @@ On repasse ensuite par notre condition pour vérifier le remplissage de toutes l
 ```
 
 
-## Création d'un page de login
+## Création d'une page de login
 
-On créer dans notre base de donnée une table pour contenir notre utilisateur et son mot de passe qui pour l'exemple seront admin et admin.
+### La page login.php
 
+On créer dans notre base de donnée une table pour contenir notre utilisateur et son mot de passe qui pour l'exemple seront admin et admin et déjà inséré en dur dans la bd (pas de hash)
 
+On vérifie déjà si l'on reçoit bien notre formulaire de login  et que les champs de sont pas vides ```if(isset($_POST) && !empty($_POST['user']) && !empty($_POST['password']))``` on fait ensuite notre requête SQL pour récupérer  les données de la base de donnée ```'SELECT id, user, pwd FROM membre WHERE user=:user'``` on pépare la requête pour se prémunir d'éventuelles injection SQL et on récupère les résultats où le nom de l'utilisateur indiqué dans le formulaire correspond a celui de la bdd.
+
+On vérifie si le résultat n'est pas booléen pour ne pas avoir d'erreur dans le PHP (ce qui sera le cas si les données du formulaire ne sont pas dans la bdd) ```if(gettype($result) !== 'boolean')```.
+
+On va ensuite comparer le mot passe avec celui indiqué dans la formulaire de login correspondant à l'utilisateur indiqué ```if($result['pwd'] == $password)```.
+
+Si l'utilisateur et le mot de passe correspondent on démarre le session et on l'attribue à l'utilisateur  puis on le redirige vers notre page index.php. Sinon on lui dit que l'accès et refusé et il doit à nouveau taper un mot de passe et un identifiant ou il ne sera pas redirigé sur le page principale.
+
+```
+    if(gettype($result) !== 'boolean'){
+        if($result['pwd'] == $password){
+            session_start();
+            $_SESSION['user'] = $user;
+            header('Location: index.php');
+            exit;
+        }else{
+            echo 'Accès refusé';
+        }
+    }
+```
+
+### Sur la page index.php
+
+On démarre le session et on vérifie si elle est bien attribuée à un utilisateur, si elle ne l'est pas on rediriger vers la page login.php 
+
+```
+    session_start();
+    require_once('db.php');
+    if(!isset($_SESSION['user'])){
+        header('Location: login.php');
+        exit;
+    }
+```
+
+### La page logout.php
+
+On démarre la session et si elle est détruite on redirige sur la page login.php. La destruction de la session se fait lor du clic sur un lien de la page index.php
+
+```
+require_once('db.php');
+session_start();
+
+if(session_destroy()){
+    header('Location: login.php');
+    exit;
+}
+
+```
 
