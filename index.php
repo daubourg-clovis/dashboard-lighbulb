@@ -46,20 +46,25 @@
       <div class="container">
         <h2 id="h2-index">Gestion des ampoules</h2>
         
-        <div id="action-bar" class="">        
-        <!-- Redirection  ajout ampoule  -->
-        <div class="vert-align">
-            <div id="btn-margin">
-            <a href="edit.php" class="btn btn-primary btn-lg">Entrer un changement d'ampoule</a>
-        <!-- Formulaire de recherche ------->
-            <form action="index.php" method="post">
-              <input type="text" id="search" name="search">
-              <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z"/></svg></button>
-              <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-3.31 0-6.291 1.353-8.459 3.522l-2.48-2.48-1.061 7.341 7.437-.966-2.489-2.488c1.808-1.808 4.299-2.929 7.052-2.929 5.514 0 10 4.486 10 10s-4.486 10-10 10c-3.872 0-7.229-2.216-8.89-5.443l-1.717 1.046c2.012 3.803 6.005 6.397 10.607 6.397 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg></button>
-            </form>
-        </div>
+        <div id="action-bar">
+            <!-- Redirection  ajout ampoule  -->
+            <div class="vert-align">
+                <div id="btn-margin">
+                  <a href="edit.php" class="btn btn-primary btn-lg">Entrer un changement d'ampoule</a>
+                </div>
+              </div>
+            <!-- Formulaire de recherche ------->
+            <div class="vert-align">
+              <form action="index.php" method="post">
+                <input type="text" id="search" name="search">
+                <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z"/></svg></button>
+                <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-3.31 0-6.291 1.353-8.459 3.522l-2.48-2.48-1.061 7.341 7.437-.966-2.489-2.488c1.808-1.808 4.299-2.929 7.052-2.929 5.514 0 10 4.486 10 10s-4.486 10-10 10c-3.872 0-7.229-2.216-8.89-5.443l-1.717 1.046c2.012 3.803 6.005 6.397 10.607 6.397 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg></button>
+              </form>
+            </div>
+        </div>       
+        
 
-      </div>
+      
       <!-- Tableau d'affichage des données ----------->
                 <table class="table table-bordered">
                     <tr>
