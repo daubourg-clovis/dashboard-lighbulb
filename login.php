@@ -43,13 +43,13 @@ if(isset($_POST) && !empty($_POST['user']) && !empty($_POST['password'])){
                  <div class="col-lg-4 col-sm-4 col-4">
                      <label for="id">Identifiant :</label>
                  </div>
-                 <input type="text" id="user" name="user" placeholder="admin" class="width-f">
+                 <input type="text" id="user" name="user" placeholder="admin" class="width-log">
              </div>
              <div class="form-group row">
                  <div  class="col-lg-4 col-sm-4 col-4">
                      <label for="pass">Mot de passe :</label>      
                  </div>
-             <input type="text" id="password" name="password" placeholder="admin" class="width-f"> 
+             <input type="text" id="password" name="password" placeholder="admin" class="width-log"> 
              </div>
              <button type="submit"  id="btn-login"name="login" class="btn btn-primary btn-lg">LOGIN <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="login-arrow"><path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg></button>
          

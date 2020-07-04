@@ -22,6 +22,13 @@ th,td{
 .svg-center{
     text-align: center;
 }
+#mgn-left{
+    margin-left: 20px;
+}
+
+#session-user{
+    margin: 0;
+}
 
 .navbar{
     background-color: #192734;
@@ -34,6 +41,11 @@ th,td{
 
 #action-bar{
     display: flex;
+    justify-content: space-between;
+}
+
+.svg-search{
+    fill: white;
 }
 #svg-bulb{
     fill: #f8ff40;
@@ -52,9 +64,24 @@ th,td{
     fill: red;
 }
 
-#btn-cross{
+#search{
+    width: 329px;
+    height: 48px;
+    font-size: 1.5rem;
+}
+
+.btn-search{
+    position: relative;
+    top: -5px;
+}
+
+#btn-cross, .btn-search{
     border: none;
     background-color: transparent;
+}
+
+#user{
+    color: #0069D9;
 }
 
 #add{
@@ -162,7 +189,7 @@ button{
     text-transform: none;
 }
 
-.width-f{
+.width-f, .width-log{
     min-width: 15.625rem;
     min-height: 2.5rem;
 }
@@ -186,6 +213,9 @@ button{
     .box{
         margin-top: 3rem;
     }
+    #h2-index{
+        margin-bottom: 2rem;
+    }
 }
 
 
@@ -194,15 +224,32 @@ button{
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px)
 {
-    #btn-margin{
-        text-align: center;
-    }
 
-    #btn-end{
-        text-align: center;
+    #h2-index{
         margin-bottom: 2rem;
     }
 
+    #btn-end{
+        margin-bottom: 2rem;
+    }
+
+    .loginbox{
+        margin-top: 250px;
+    }
+
+    .btn-enter{
+        width: 50%;
+    }
+
+    #search{
+        width: 50%;
+        position: relative;
+        top: 25px;
+    }
+
+    .btn-search{
+        top: 18px;
+    }
     .container{
         padding: 0;
         margin: 0 1.063rem;
@@ -220,13 +267,16 @@ button{
 
 @media only screen and (min-width: 480px) and (max-width: 767.98px)
 {
-    #btn-margin{
-        text-align: center;
+
+    #h1-edit{
+        font-size: 1.5rem;
+    }
+    #btn-end{
+        margin-bottom: 2rem;
     }
 
-    #btn-end{
-        text-align: center;
-        margin-bottom: 2rem;
+    .loginbox{
+        margin-top: 250px;
     }
 
     .container{
@@ -234,14 +284,41 @@ button{
         margin: 0 0.5rem;
     }
 
+    #action-bar{
+        flex-flow: wrap;
+    }
+    .btn-enter{
+        width: 75%;
+        text-align: left;
+    }
+
+    #btn-margin{
+        margin: 0;
+    }
+
+    #search{
+        width: 247px;
+        position: relative;
+        top: 0px;
+    }
+
+    #h2-index{
+        margin-bottom: 2rem;
+    }
+ 
+
     .box{
         margin-top: 0;
-        min-height: device-height;
     }
 
 
     #form-padding{
         padding-left: 100px;
+        margin-top: -30px;
+    }
+
+    .button_div{
+        margin-bottom: 10px;
     }
    
 
@@ -253,20 +330,54 @@ button{
 
 @media only screen and (max-width : 479.98px)
 {
-    #btn-margin{
-        text-align: center;
+
+    #h2-index{
+        margin-bottom: 2rem;
+    }
+
+    #h1-edit{
+        font-size: 1.5rem;
     }
 
     #btn-end{
-        text-align: center;
         margin-bottom: 2rem;
     }
+
+    .loginbox{
+        margin-top: 150px;
+        max-width: 100%;
+    }
+
+    #btn-login{
+        margin-bottom: 1rem;
+    }
+
+    .btn-enter{
+        width: 75%;
+        text-align: left;
+        margin: 0 0 5px;
+    }
+
+    #btn-margin{
+        margin: 0;
+    }
+
+    #search, .btn-search{
+        display: none;
+    }
+
+
 
     .container{
         padding: 0;
         margin: 0;
     }
 
+    .width-log{
+        max-height: 1.5rem;
+        max-width: 5rem;
+        width: 100%;
+    }
     .box{
         margin-top: 0;
         max-height: device-height;
@@ -275,5 +386,10 @@ button{
 
     #form-padding{
         padding-left: 75px;
+        margin-top: -20px;
+    }
+
+    .button_div{
+        margin-bottom: 8px;
     }
 }
