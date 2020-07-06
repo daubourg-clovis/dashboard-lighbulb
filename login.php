@@ -1,7 +1,7 @@
 <?php
  require_once('db.php');
 
-
+// On vérifie déjà que le formulaire ne soit pas vide
 if(isset($_POST) && !empty($_POST['user']) && !empty($_POST['password'])){
     extract($_POST);
     $sql = 'SELECT id, user, pwd FROM membre WHERE user=:user';
@@ -10,6 +10,7 @@ if(isset($_POST) && !empty($_POST['user']) && !empty($_POST['password'])){
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
     if(gettype($result) !== 'boolean'){
+    // On démarre le session si on récupère un mot de passe correspondant à l'user 
         if($result['pwd'] == $password){
             session_start();
             $_SESSION['user'] = $user;
@@ -38,6 +39,7 @@ if(isset($_POST) && !empty($_POST['user']) && !empty($_POST['password'])){
  <body>
      <div class="loginbox">
          <h1>BIENVENUE</h1>
+         <!-- J'ai fait le choix de na pas récupérer la valeur du nom d'utilisateur, c'est ,je trouve, mieux pour ne pas se tromper une deuxième fois, pareil pour la vérification du mot de passe, comme ça la personne ne sait pas si il y a une identifiant à ce nom  -->
          <form action="login.php" method ="post" id="login" class="vert-align">
              <div class="form-group row">
                  <div class="col-lg-4 col-sm-4 col-4">

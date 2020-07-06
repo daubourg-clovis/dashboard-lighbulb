@@ -5,6 +5,7 @@
            header('Location: login.php');
            exit;
        }
+//On initialise des variables vides pour le remplir lors du remplissage du formulaire
 
     $id = '';
     $change_date = '';
@@ -14,16 +15,19 @@
     $brand = '';
     $error = false;
 
+    //Si l'on a cliqué sur éditer on passe par cette condition
     if(isset($_GET['edit']) && ($_GET['id'])){
         $sql = 'SELECT id, change_date, floor, position, power, brand FROM lightbulb WHERE id=:id';
         $sth = $pdo->prepare($sql);
         $sth->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
         $sth->execute();
         $data = $sth->fetch(PDO::FETCH_ASSOC);
+        //Si on rentre directement une id dans l'url et qu'elle n'existe pas elle deviendra booléene et sera une erreur, dans ce cas là on redirige sur la page d'index
         if(gettype($data) === 'boolean'){
             header('Location : index.php');
             exit;
         }
+        //Si l'on a cliqué sur éditer, les champs du formulaire son récupérés
         $change_date = $data['change_date'];
         $floor = $data['floor'];
         $position = $data['position'];
@@ -32,8 +36,8 @@
         $id = htmlentities($_GET['id']);
     }
 
+    // On vérifie que les champs ne soient pas vides, sinon on n'execute pas la requête
     if(count($_POST) > 0){
-        // On vérifie que les champs ne soient pas vides, sinon on n'execute pas la requête
         if(strlen(trim($_POST['change_date']) !== 0)){
             $change_date = trim($_POST['change_date']);
         }else{
@@ -65,7 +69,7 @@
             $id = htmlentities($_POST['id']);
         }
 
-        // Si pas d'erreur, (aucun champ vide) on insère dans la bd
+        // Si pas d'erreur, (aucun champ vide) on insère dans la bdd
         if($error === false){
             if(isset($_POST['edit']) && ($_POST['id'])){
                 $sql = 'UPDATE lightbulb SET change_date=:change_date, floor=:floor, position=:position, power=:power, brand=:brand WHERE id=:id';
@@ -105,6 +109,7 @@
     <div class="box">
         <header id="header-edit">
             <?php
+            // Verification si clic sur éditer ou ajouter changement du bouton et du titre
                 if(isset($_GET['edit']) && ($_GET['id'])){
                     $titleText = "Modifier la ligne";
                     $cancelText = "Annuler";
@@ -119,6 +124,7 @@
             <a href="index.php" class="btn btn-primary btn-sm" id="btn-mg"><?=$cancelText?></a>
         </div>
         <div class="vert-align">
+        <!-- Pour chaque input on lui met la value qui a été indiquée soit quand on a cliquer sur modifier soit quand le formulaire s'est rechargé a cause d'un erreur -->
             <form  method="post" id="form-padding" >
                 <div class="form-group row xs-flex">
                     <div class="col-lg-3 col-sm-3 col-xs-3">
@@ -134,6 +140,7 @@
                     </div>
                     <select name="floor" id="floor" required class="width-f">
                         <?php 
+                        // Pour remettre la value d'une modification ou d'un échac d'envoi de formulaire
                             if(isset($_GET['id']) && isset($_GET['edit'])){
                                 $value = $floor;
                                 $selectText = $floor;
@@ -163,6 +170,7 @@
                     </div>
                     <select name="position" id="position" required class="width-f">
                     <?php 
+                        // Pour remettre la value d'une modification ou d'un échac d'envoi de formulaire
                             if(isset($_GET['id']) && isset($_GET['edit'])){
                                 $value = $position;
                                 $selectText = $position;
@@ -192,6 +200,7 @@
                 </div>
                 <div class="button_div">
                     <?php
+                    // Modification du bouton si clic sur modifier
                         if(isset($_GET['id']) && isset($_GET['edit'])){
                             $validateText = 'Modifier';
                         }else{
@@ -200,6 +209,7 @@
                     ?>
                     <button type="submit" class="btn btn-primary btn-lg"><?=$validateText?></button>
                     <?php
+                    //recupération des informations si modification
                         if(isset($_GET['id']) && isset($_GET['edit'])){
                     ?>
                     <input type="hidden" name="edit" value="1">

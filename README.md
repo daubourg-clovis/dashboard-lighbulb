@@ -187,7 +187,8 @@ if(session_destroy()){
 ```
 
 ## Création du CSS avec l'aide de bootstrap
-    Utilisation de la grille, des preset de base de bootstrap pour le tableau et les boutons. Mise en place d'icônes pour modifier/supprimer/se déconnecter
+
+Utilisation de la grille, des preset de base de bootstrap pour le tableau et les boutons. Mise en place d'icônes pour modifier/supprimer/se déconnecter
 
 
 
